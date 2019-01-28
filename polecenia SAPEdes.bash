@@ -32,8 +32,10 @@ docker run --rm -u `stat -c "%u:%g" .` -v `pwd`:/home   prokka:1.11   prokka --c
 
 #If you have serveral contigs:
 ./prepare_prokka_contig.py --prokka-dir prokka_1 --prokka-prefix IFB_XXXX --output-dir prokka --output-prefix IFB_XXXX
-./reorient_genome.py -i prokka_1/IFB_XXXX.gbk -g dnaA -o genome.fastapecto
 docker run --rm -u `stat -c "%u:%g" .` -v `pwd`:/home   prokka:1.11   prokka --cpus 12 --compliant --centre XXX --rfam --force --outdir prokka_2/ --prefix IFB_XXXX --genus Pectobacterium --species parmentieri --strain IFB_XXXX genome.fasta
 
 #In case of full chromosome:
 ./prepare_prokka.py --prokka-dir prokka_2 --prokka-prefix IFB_XXXX --output-dir prokka --output-prefix IFB_XXXX
+
+#Reorient the genome
+./reorient_genome.py -i prokka_1/IFB_XXXX.gbk -g dnaA -o genome.fasta
